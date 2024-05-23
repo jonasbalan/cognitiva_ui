@@ -1,6 +1,6 @@
-import 'package:cognitiva_ui/components/dynamicForm.dart';
 import 'package:cognitiva_ui/components/dynamicFormFields/dynamicEnumDropDownField.dart';
 import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormFieldBase.dart';
+import 'package:cognitiva_ui/components/dynamicStatefullFormField.dart';
 import 'package:flutter/material.dart';
 
 class DynamicRefObjectFormField extends DynamicFormFieldBase {
@@ -26,12 +26,12 @@ class DynamicRefObjectFormField extends DynamicFormFieldBase {
           onSaved: super.onSaved,
           currentValue: super.currentValue);
     } else {
-      //return component as Map<String, dynamic>;
-      return Container(
-          child: DynamicForm(
-        url: Uri.parse(""),
+      return DynamicStatefulFormField(
+        key: ValueKey('${super.fieldKey}_refObjGroupFields'),
         schema: component,
-      ));
+        formData: super.currentValue,
+        onSaved: super.onSaved,
+      );
     }
   }
 }

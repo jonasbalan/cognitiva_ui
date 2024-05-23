@@ -330,7 +330,7 @@ class concursoOpenApiMetadataMock {
                   "example": "Nova versão do Edital dísponivel"
                 },
                 "paymentContractId": {
-                  "title": "Contrto de pagamento",
+                  "title": "Contrato de pagamento",
                   "type": "string",
                   "description":
                       "Identificador do contrato de pagamento utilizado por esse concurso ",

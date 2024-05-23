@@ -23,7 +23,7 @@ class DynamicEnumDropDownField extends DynamicFormFieldBase {
       return DropdownButtonFormField<String>(
         key: CreateInputFieldKey(),
         items: menuItens,
-        onChanged: (s) => {},
+        onChanged: (s) => super.onSaved(s),
         decoration: InputDecoration(
             border: const OutlineInputBorder(), hintText: itens.first),
       );

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dynamic Entity Demo',
+      title: 'GCON - Gestão de Concursos',
       theme: ThemeData(
         // This is the theme of your application.
         //

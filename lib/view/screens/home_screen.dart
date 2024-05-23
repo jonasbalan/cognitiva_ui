@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:cognitiva_ui/view/screens/concurso/concurso.edit.dart';
 import 'package:cognitiva_ui/view/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
@@ -10,17 +12,28 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         drawer: const DrawerMenu(),
         appBar: AppBar(
-          title: const Text("Dynamic Entities Example"),
+          title: const Text("GCON Gestão de Concursos"),
           //actions: [Text("Address"), Divider(), Text("Professional")],
         ),
-        persistentFooterAlignment: AlignmentDirectional.bottomStart,
+        persistentFooterAlignment: AlignmentDirectional.centerStart,
         persistentFooterButtons: [
-          IconButton(onPressed: () => {}, icon: const Icon(Icons.home)),
-          IconButton(
-              onPressed: () => {}, icon: const Icon(Icons.monetization_on)),
-          IconButton(
-              onPressed: () => {},
-              icon: const Icon(Icons.supervised_user_circle))
+          Row(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            IconButton(onPressed: () => {}, icon: const Icon(Icons.home)),
+            IconButton(
+                onPressed: () => {}, icon: const Icon(Icons.monetization_on)),
+            IconButton(
+                onPressed: () => {},
+                icon: const Icon(Icons.supervised_user_circle)),
+            Flexible(
+                flex: 2,
+                child: Container(
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
+                    child: ElevatedButton(
+                      child: const Text("Salvar"),
+                      onPressed: () => {},
+                    )))
+          ])
         ],
         body: const Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

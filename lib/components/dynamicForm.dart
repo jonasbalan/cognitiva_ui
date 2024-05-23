@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormField.dart';
+import 'package:cognitiva_ui/components/dynamicContentBaseForm.dart';
 import 'package:cognitiva_ui/insfrastructure/helpers/jsonHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -12,16 +12,24 @@ class DynamicForm extends StatefulWidget {
       {super.key, required this.url, required this.schema, this.formData});
 
   @override
-  _DynamicFormState createState() => _DynamicFormState();
+  _DynamicFormState createState() => _DynamicFormState(formData);
 }
 
 class _DynamicFormState extends State<DynamicForm> {
   final _formKey = GlobalKey<FormState>();
-  final Map<String, dynamic> _formData = {};
+  Map<String, dynamic> _formData = {};
+
+  _DynamicFormState(Map<String, dynamic>? formData) {
+    _formData = formData ?? {};
+  }
 
   Future<void> _submitForm() async {
     if (_formKey.currentState?.validate() ?? false) {
+      var snackMsg = ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Processing Data')));
+
       _formKey.currentState?.save();
+
       final body = JsonDynamicSerializer.jsonDynamicEncode(_formData);
       final response = await http.post(
         widget.url,
@@ -31,11 +39,18 @@ class _DynamicFormState extends State<DynamicForm> {
         body: body,
       );
 
+      snackMsg.close();
+      String msgResul = "";
       if (response.statusCode == 200) {
+        msgResul = "Sucesso";
         print('Success');
       } else {
+        msgResul = "Falha ao enviar requisição";
         print('Failed to submit form');
       }
+
+      var snackMsg1 = ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(msgResul)));
     }
   }
 
@@ -50,50 +65,33 @@ class _DynamicFormState extends State<DynamicForm> {
     } else {
       return Form(
           key: _formKey,
-          child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Card(
-                  child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Expanded(
-                          child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          ListTile(
-                            title:
-                                Text(widget.schema?["title"].toString() ?? ""),
-                            //tileColor: Colors.red,
-                            leading: const Icon(Icons.home_work_outlined),
-
-                            titleAlignment: ListTileTitleAlignment.center,
+          child: Flexible(
+              child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 1024),
+                  child: Container(
+                      constraints: const BoxConstraints(maxWidth: 1024),
+                      child: Column(mainAxisSize: MainAxisSize.min, children: [
+                        DynamicContentBaseForm(
+                          key: ValueKey(
+                              '${widget.schema!["title"].toString().trim()}_formContentKey'),
+                          schema: widget.schema!,
+                          formData: _formData,
+                          onSaved: (fieldKey, newValue) => {
+                            setState(() {
+                              _formData[fieldKey] = newValue;
+                            })
+                          },
+                          onSubmit: _submitForm,
+                        ),
+                        const Divider(),
+                        Container(
+                          margin: const EdgeInsets.only(top: 15.0, bottom: 10),
+                          child: ElevatedButton(
+                            onPressed: _submitForm,
+                            child: const Text('Salvar'),
                           ),
-                          const Divider(),
-                          ...widget.schema?['properties'].entries
-                              .map<Widget>((entry) {
-                            return DynamicFormField(
-                                key: ValueKey('${entry.key}_key'),
-                                fieldKey: entry.key,
-                                fieldSchema:
-                                    entry.value as Map<String, dynamic>,
-                                onSaved: (newValue) => {
-                                      setState(() {
-                                        _formData[entry.key] = newValue;
-                                      })
-                                    },
-                                currentValue: _formData[entry.key]);
-                          }).toList()
-                            ..add(const Divider())
-                            ..add(Container(
-                              margin: const EdgeInsets.only(top: 15.0),
-                              child: ElevatedButton(
-                                onPressed: _submitForm,
-                                child: const Text('Submit'),
-                              ),
-                            ))
-                        ],
-                      ))))));
+                        )
+                      ])))));
     }
   }
 }
