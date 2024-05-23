@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:cognitiva_ui/view/screens/concurso/concurso.edit.dart';
 import 'package:cognitiva_ui/view/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
