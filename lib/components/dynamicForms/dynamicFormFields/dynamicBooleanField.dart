@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormFieldBase.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicFormFieldBase.dart';
 import 'package:flutter/material.dart';
 
 class DynamicBooleanFormField extends DynamicFormFieldBase {
@@ -19,7 +19,10 @@ class DynamicBooleanFormField extends DynamicFormFieldBase {
       key: CreateInputFieldKey(),
       controlAffinity: ListTileControlAffinity.leading,
       title: getLabelText(),
+      //value: false,
       value: currentValue ?? false,
+      //isThreeLine: true,
+      //onChanged: onSaved,
       shape: const OutlineInputBorder(),
       onChanged: (value) => {onSaved(value)},
     );

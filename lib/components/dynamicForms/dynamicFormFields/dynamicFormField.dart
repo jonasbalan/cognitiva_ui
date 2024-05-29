@@ -1,8 +1,8 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicBooleanFormField.dart';
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicDateTimeFormField.dart';
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicNumberField.dart';
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicRefObjectField.dart';
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicTextFormField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicBooleanFormField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicDateTimeFormField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicNumberField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicRefObjectField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

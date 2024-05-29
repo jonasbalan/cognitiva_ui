@@ -14,7 +14,29 @@ class concursoOpenApiMetadataMock {
                 }
               ],
               "responses": {
-                "200": {"description": "OK"}
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "text/plain": {
+                      "schema": {
+                        "\$ref":
+                            "#/components/schemas/ConcursoAfroConfigViewModel"
+                      }
+                    },
+                    "application/json": {
+                      "schema": {
+                        "\$ref":
+                            "#/components/schemas/ConcursoAfroConfigViewModel"
+                      }
+                    },
+                    "text/json": {
+                      "schema": {
+                        "\$ref":
+                            "#/components/schemas/ConcursoAfroConfigViewModel"
+                      }
+                    }
+                  }
+                }
               }
             },
             "post": {
@@ -107,7 +129,38 @@ class concursoOpenApiMetadataMock {
                 }
               ],
               "responses": {
-                "200": {"description": "OK"}
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "text/plain": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref":
+                              "#/components/schemas/ConcursoAfroConfigViewModel"
+                        }
+                      }
+                    },
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref":
+                              "#/components/schemas/ConcursoAfroConfigViewModel"
+                        }
+                      }
+                    },
+                    "text/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref":
+                              "#/components/schemas/ConcursoAfroConfigViewModel"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           },
@@ -122,7 +175,26 @@ class concursoOpenApiMetadataMock {
                 }
               ],
               "responses": {
-                "200": {"description": "OK"}
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "text/plain": {
+                      "schema": {
+                        "\$ref": "#/components/schemas/ConcursoViewModel"
+                      }
+                    },
+                    "application/json": {
+                      "schema": {
+                        "\$ref": "#/components/schemas/ConcursoViewModel"
+                      }
+                    },
+                    "text/json": {
+                      "schema": {
+                        "\$ref": "#/components/schemas/ConcursoViewModel"
+                      }
+                    }
+                  }
+                }
               }
             },
             "post": {
@@ -209,7 +281,35 @@ class concursoOpenApiMetadataMock {
                 }
               ],
               "responses": {
-                "200": {"description": "OK"}
+                "200": {
+                  "description": "OK",
+                  "content": {
+                    "text/plain": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref": "#/components/schemas/ConcursoViewModel"
+                        }
+                      }
+                    },
+                    "application/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref": "#/components/schemas/ConcursoViewModel"
+                        }
+                      }
+                    },
+                    "text/json": {
+                      "schema": {
+                        "type": "array",
+                        "items": {
+                          "\$ref": "#/components/schemas/ConcursoViewModel"
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }

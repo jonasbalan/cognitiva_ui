@@ -1,9 +1,8 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormFieldBase.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicFormFieldBase.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-class DynamicNumberFormField extends DynamicFormFieldBase {
-  const DynamicNumberFormField(
+class DynamicTextFormField extends DynamicFormFieldBase {
+  const DynamicTextFormField(
       {super.key,
       required super.fieldKey,
       required super.fieldSchema,
@@ -12,11 +11,12 @@ class DynamicNumberFormField extends DynamicFormFieldBase {
 
   @override
   Widget build(BuildContext context) {
-    return getNumbeTextFormField();
+    return getTextFormField();
   }
 
-  Widget getNumbeTextFormField() {
+  Widget getTextFormField() {
     return TextFormField(
+      key: CreateInputFieldKey(),
       onSaved: onSaved,
       decoration: InputDecoration(
         // labelText: getLableText(fieldKey),
@@ -24,10 +24,6 @@ class DynamicNumberFormField extends DynamicFormFieldBase {
         hintText: getHintText(),
         border: const OutlineInputBorder(),
       ),
-      keyboardType: TextInputType.number,
-      inputFormatters: <TextInputFormatter>[
-        FilteringTextInputFormatter.digitsOnly
-      ], // Only numbers can be entered
     );
   }
 }

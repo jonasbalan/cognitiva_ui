@@ -1,4 +1,5 @@
 import 'package:cognitiva_ui/view/screens/concurso/concurso.edit.dart';
+import 'package:cognitiva_ui/view/screens/concurso/concurso.index.dart';
 import 'package:cognitiva_ui/view/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,7 @@ class HomeScreen extends StatelessWidget {
               Flexible(
                   child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: ConcursoEditScreen(),
+                child: ConcursoListScreen(),
               ))
             ]));
   }

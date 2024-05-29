@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicContentBaseForm.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicContentBaseForm.dart';
 import 'package:cognitiva_ui/insfrastructure/helpers/jsonHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

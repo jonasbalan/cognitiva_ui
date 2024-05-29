@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormField.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicFormField.dart';
 import 'package:flutter/material.dart';
 
 class DynamicContentBaseForm extends StatelessWidget {
@@ -27,14 +27,14 @@ class DynamicContentBaseForm extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     ListTile(
-                      title: Text(schema?["title"].toString() ?? ""),
+                      title: Text(schema["title"].toString() ?? ""),
                       //tileColor: Colors.red,
                       leading: const Icon(Icons.home_work_outlined),
 
                       titleAlignment: ListTileTitleAlignment.center,
                     ),
                     const Divider(),
-                    ...schema?['properties'].entries.map<Widget>((entry) {
+                    ...schema['properties'].entries.map<Widget>((entry) {
                       return DynamicFormField(
                           key: ValueKey('${entry.key}_key'),
                           fieldKey: entry.key,

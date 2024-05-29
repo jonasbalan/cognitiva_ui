@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormFieldBase.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicFormFieldBase.dart';
 import 'package:flutter/material.dart';
 
 class DynamicDatetimeFormField extends DynamicFormFieldBase {
@@ -21,7 +21,7 @@ class DynamicDatetimeFormField extends DynamicFormFieldBase {
         ? (DateTime.tryParse(currentValue))
         : DateTime.now();
 
-    _selectDate(BuildContext context) async {
+    selectDate(BuildContext context) async {
       final DateTime? picked = await showDatePicker(
           context: context,
           firstDate: firstDate,
@@ -48,7 +48,7 @@ class DynamicDatetimeFormField extends DynamicFormFieldBase {
         // ),
       ),
       keyboardType: TextInputType.datetime,
-      onTap: () => _selectDate(context),
+      onTap: () => selectDate(context),
     );
 
     // return GestureDetector(

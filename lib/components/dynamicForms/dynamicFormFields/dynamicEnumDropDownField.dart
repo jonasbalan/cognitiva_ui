@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicFormFields/dynamicFormFieldBase.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicFormFields/dynamicFormFieldBase.dart';
 import 'package:flutter/material.dart';
 
 class DynamicEnumDropDownField extends DynamicFormFieldBase {

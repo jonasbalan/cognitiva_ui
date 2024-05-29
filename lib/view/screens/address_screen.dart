@@ -1,4 +1,4 @@
-import 'package:cognitiva_ui/components/dynamicForm.dart';
+import 'package:cognitiva_ui/components/dynamicForms/dynamicForm.dart';
 import 'package:flutter/material.dart';
 
 class AddressScreen extends StatelessWidget {
