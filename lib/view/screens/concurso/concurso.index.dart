@@ -1,6 +1,8 @@
 import 'package:cognitiva_ui/components/dynamicList/dynamicDataGrid.dart';
+import 'package:cognitiva_ui/components/layout/basicScaffoldScreen.dart';
 import 'package:cognitiva_ui/mocks/concursoDataMock.dart';
 import 'package:cognitiva_ui/providers/states/openApiSpecsProvider.dart';
+import 'package:cognitiva_ui/view/screens/concurso/concurso.edit.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,9 +31,12 @@ class ConcursoListScreen extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else {
             return DynamicDataGrid(
-                url: Uri.parse('$baseUrl$path'),
-                schema: concursoOpenApiMetada.getListSpec(path),
-                listData: snapshot.data);
+              url: Uri.parse('$baseUrl$path'),
+              schema: concursoOpenApiMetada.getListSpec(path),
+              listData: snapshot.data,
+              editCreate:
+                  const BasicScaffoldScreen(child: ConcursoEditScreen()),
+            );
           }
         });
   }

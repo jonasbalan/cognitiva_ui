@@ -21,7 +21,7 @@ class OpenApiSpecsProvider with ChangeNotifier {
     Map<String, Map<String, dynamic>> httpMethodSpec = {};
     httpMethodSpec.addAll({httpMethod: formSpec!});
     _formsSpecs.addAll({path: httpMethodSpec});
-    notifyListeners();
+    //notifyListeners();
     return formSpec;
   }
 
@@ -30,7 +30,7 @@ class OpenApiSpecsProvider with ChangeNotifier {
     Map<String, Map<String, dynamic>> httpMethodSpec = {};
     httpMethodSpec.addAll({httpMethod: formSpec!});
     _formsSpecs.updateAll((key, value) => httpMethodSpec);
-    notifyListeners();
+    //notifyListeners();
     return formSpec;
   }
 
@@ -46,7 +46,7 @@ class OpenApiSpecsProvider with ChangeNotifier {
   Map<String, dynamic> _getListPathSpec(String path) {
     var listSpec = DynamicMetadaReader().getListSpec(path);
     _listSpecs.addAll({path: listSpec as Map<String, dynamic>});
-    notifyListeners();
+    //notifyListeners();
     return listSpec;
   }
 }

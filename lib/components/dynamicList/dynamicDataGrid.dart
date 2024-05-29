@@ -6,8 +6,14 @@ class DynamicDataGrid extends StatefulWidget {
   final Uri url;
   final Map<String, dynamic>? schema;
   final List<Map<String, dynamic>>? listData;
+  final Widget? editCreate;
+
   const DynamicDataGrid(
-      {super.key, required this.url, this.schema, this.listData});
+      {super.key,
+      required this.url,
+      this.schema,
+      this.listData,
+      this.editCreate});
 
   @override
   State<DynamicDataGrid> createState() => _DynamicDataGridState();
@@ -24,7 +30,9 @@ class _DynamicDataGridState extends State<DynamicDataGrid> {
         var column = PlutoColumn(
             title: value["title"] as String,
             field: key,
-            type: PlutoColumnType.text());
+            type: PlutoColumnType.text(),
+            textAlign: PlutoColumnTextAlign.start,
+            titleTextAlign: PlutoColumnTextAlign.end);
         result.add(column);
       }
     });
@@ -38,29 +46,40 @@ class _DynamicDataGridState extends State<DynamicDataGrid> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(15),
-        child: Column(children: [
-          PlutoGrid(
-            columns: getColumns(),
-            rows: getRowns(),
-            //columnGroups: columnGroups,
-            onLoaded: (PlutoGridOnLoadedEvent event) {
-              stateManager = event.stateManager;
-              stateManager.setShowColumnFilter(true);
-            },
-            onChanged: (PlutoGridOnChangedEvent event) {
-              //print(event);
-              developer.log(event.value);
-            },
-            configuration: const PlutoGridConfiguration(),
-          ),
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        verticalDirection: VerticalDirection.down,
+        textDirection: TextDirection.ltr,
+        children: [
+          Container(
+              padding: const EdgeInsets.all(15),
+              constraints: const BoxConstraints(maxHeight: 200),
+              child: PlutoGrid(
+                columns: getColumns(),
+                rows: getRowns(),
+                // //columnGroups: columnGroups,
+                onLoaded: (PlutoGridOnLoadedEvent event) {
+                  stateManager = event.stateManager;
+                  stateManager.setShowColumnFilter(true);
+                },
+                onChanged: (PlutoGridOnChangedEvent event) {
+                  //print(event);
+                  developer.log(event.value);
+                },
+                configuration: const PlutoGridConfiguration(),
+              )),
           FloatingActionButton(
             onPressed: () {
               // Add your onPressed code here!
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => widget.editCreate!),
+              );
             },
             child: const Icon(Icons.add),
           ),
-        ]));
+        ]);
   }
 }
